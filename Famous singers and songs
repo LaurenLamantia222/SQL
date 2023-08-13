@@ -1,0 +1,45 @@
+CREATE TABLE artists (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ stage_name TEXT, 
+ real_name TEXT
+);
+
+INSERT INTO artists (stage_name, real_name) VALUES ("Taylor Swift",      "Taylor Swift");
+INSERT INTO artists (stage_name,real_name) VALUES ("Lana Del Rey", "Elizabeth Woodridge Grant");
+INSERT INTO artists (stage_name,real_name) VALUES ("Nicki Minaj", "Onika Tanya Maraj");
+INSERT INTO artists (stage_name,real_name) VALUES ("Frank Ocean", "Christopher Breaux");
+INSERT INTO artists (stage_name, real_name) VALUES ("Kendrick Lamar", "Kendrick Lamar Duckworth");
+INSERT INTO artists (stage_name,real_name) VALUES ("Eminem", "Marshall Bruce Mathers III");
+
+CREATE TABLE songs (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+  artist_id INTEGER,
+  title TEXT,
+  release_year INTEGER,
+  album TEXT
+ );
+  
+INSERT INTO songs (artist_id, title, release_year, album)
+  VALUES (1, "Cruel Summer", 2023, "1989");
+INSERT INTO songs(artist_id,title,release_year,album) 
+VALUES (1, "Karma", 2023, "Midnights");
+INSERT INTO songs (artist_id, title, release_year,album)
+VALUES(1, "Style", 2014, "1989");
+INSERT INTO songs (artist_id,title,release_year,album)
+VALUES (2, "Sweet Carolina", 2021, "Blue Banisters");
+INSERT INTO songs (artist_id, title, release_year,album)
+VALUES (2, "Art Deco", 2015, "Honeymoon");
+INSERT INTO songs(artist_id,title,release_year,album)
+VALUES(2, "Honeymoon", 2015, "Honeymoon");
+INSERT INTO songs (artist_id,title,release_year, album)
+VALUES(3, "Right Thru Me", 2010, "Pink Friday");
+INSERT INTO songs(artist_id,title,release_year,album)
+VALUES(3,"Super Bass", 2010, "Pink Friday");
+INSERT INTO songs(artist_id,title,release_year,album)
+VALUES(3, "Only", 2014, "The Pinkprint");
+
+SELECT * FROM artists;
+
+SELECT stage_name, title
+FROM artists, songs
+WHERE artists.id=songs.artist_id;
