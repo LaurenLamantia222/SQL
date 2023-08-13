@@ -37,9 +37,33 @@ INSERT INTO songs(artist_id,title,release_year,album)
 VALUES(3,"Super Bass", 2010, "Pink Friday");
 INSERT INTO songs(artist_id,title,release_year,album)
 VALUES(3, "Only", 2014, "The Pinkprint");
+INSERT INTO songs(artist_id,title,release_year,album)
+VALUES(4, "Super Rich Kids", 2013, "Channel Orange");
+INSERT INTO songs(artist_id,title,release_year,album)
+VALUES(6, "Mockingbird", 2004, "Encore");
+INSERT INTO songs(artist_id,title,release_year,album)
+VALUES( 6, "Not Afraid", 2010, "Recovery");
+INSERT INTO songs(artist_id,title,release_year,album)
+VALUES(5, "Money Trees", 2012, "good kid, m.A.A.d. city");
+INSERT INTO songs(artist_id,title,release_year,album)
+VALUES(5, "Poetic Justice", 2012,"good kid, m.A.A.d city");
+INSERT INTO songs(artist_id,title,release_year,album)
+VALUES(5, "Alright", 2015, "To Pimp a Butterfly");
+
+
 
 SELECT * FROM artists;
 
 SELECT stage_name, title
 FROM artists, songs
 WHERE artists.id=songs.artist_id;
+
+SELECT real_name, stage_name, album
+FROM artists
+LEFT OUTER JOIN songs
+ON artists.id = songs.artist_id;
+
+SELECT album
+FROM artists
+JOIN songs
+ON artists.id =songs.artist_id;
