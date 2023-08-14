@@ -1,0 +1,75 @@
+CREATE TABLE artists (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ stage_name TEXT, 
+ real_name TEXT,
+ age TEXT,
+ genre TEXT
+);
+
+INSERT INTO artists (stage_name, real_name,age,genre) VALUES ("Taylor Swift",  "Taylor Swift", "33","Pop");
+INSERT INTO artists (stage_name,real_name,age,genre) VALUES ("Lana Del Rey", "Elizabeth Woodridge Grant", "38","Pop");
+INSERT INTO artists (stage_name,real_name,age,genre) VALUES ("Nicki Minaj", "Onika Tanya Maraj","40","Hiphop/Rap");
+INSERT INTO artists (stage_name,real_name,age,genre) VALUES ("Frank Ocean", "Christopher Breaux","35","Hiphop/Rap");
+INSERT INTO artists (stage_name, real_name,age,genre) VALUES ("Kendrick Lamar", "Kendrick Lamar Duckworth","36","Hiphop/Rap");
+INSERT INTO artists (stage_name,real_name,age,genre) VALUES ("Eminem", "Marshall Bruce Mathers III","50","Hiphop/Rap");
+
+CREATE TABLE songs (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+  artist_id INTEGER,
+  title TEXT,
+  release_year INTEGER,
+  album TEXT
+ );
+  
+INSERT INTO songs (artist_id, title, release_year, album)
+  VALUES (1, "Cruel Summer", 2023, "1989");
+INSERT INTO songs(artist_id,title,release_year,album) 
+VALUES (1, "Karma", 2023, "Midnights");
+INSERT INTO songs (artist_id, title, release_year,album)
+VALUES(1, "Style", 2014, "1989");
+INSERT INTO songs (artist_id,title,release_year,album)
+VALUES (2, "Sweet Carolina", 2021, "Blue Banisters");
+INSERT INTO songs (artist_id, title, release_year,album)
+VALUES (2, "Art Deco", 2015, "Honeymoon");
+INSERT INTO songs(artist_id,title,release_year,album)
+VALUES(2, "Honeymoon", 2015, "Honeymoon");
+INSERT INTO songs (artist_id,title,release_year, album)
+VALUES(3, "Right Thru Me", 2010, "Pink Friday");
+INSERT INTO songs(artist_id,title,release_year,album)
+VALUES(3,"Super Bass", 2010, "Pink Friday");
+INSERT INTO songs(artist_id,title,release_year,album)
+VALUES(3, "Only", 2014, "The Pinkprint");
+INSERT INTO songs(artist_id,title,release_year,album)
+VALUES(4, "Super Rich Kids", 2013, "Channel Orange");
+INSERT INTO songs(artist_id,title,release_year,album)
+VALUES(6, "Mockingbird", 2004, "Encore");
+INSERT INTO songs(artist_id,title,release_year,album)
+VALUES( 6, "Not Afraid", 2010, "Recovery");
+INSERT INTO songs(artist_id,title,release_year,album)
+VALUES(5, "Money Trees", 2012, "good kid, m.A.A.d. city");
+INSERT INTO songs(artist_id,title,release_year,album)
+VALUES(5, "Poetic Justice", 2012,"good kid, m.A.A.d city");
+INSERT INTO songs(artist_id,title,release_year,album)
+VALUES(5, "Alright", 2015, "To Pimp a Butterfly");
+
+
+SELECT * FROM artists;
+
+SELECT stage_name, title
+FROM artists, songs
+WHERE artists.id=songs.artist_id;
+
+SELECT real_name, stage_name, album,title
+FROM artists
+LEFT OUTER JOIN songs
+ON artists.id = songs.artist_id;
+
+SELECT stage_name, album, title, release_year,genre
+FROM artists
+JOIN songs
+ON artists.id =songs.artist_id;
+
+SELECT stage_name,album,title,genre
+FROM artists
+LEFT OUTER JOIN songs
+ON artists.id =songs.artist_id;
