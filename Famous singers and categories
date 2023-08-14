@@ -8,17 +8,17 @@ CREATE TABLE artists (
 );
 
 
-INSERT INTO artists (real_name, born, age, stage_name,genre)  VALUES ("Taylor Swift","Pennsylvania","33","Taylor Swif","Pop");
+INSERT INTO artists (real_name, born, age, stage_name,genre)  VALUES ("Taylor Swift","Pennsylvania","33","Taylor Swift","Pop");
 
-INSERT INTO artists (real_name, born, age,stage_name, genre) VALUES ("Elizabeth Woodridge Grant","New York", "38", "Lana Del Rey", "Pop");
+INSERT INTO artists (real_name, born, age,stage_name, genre) VALUES ("Elizabeth Woodridge Grant","New York","38","Lana Del Rey", "Pop");
 
-INSERT INTO artists (real_name, born, age, stage_name, genre) VALUES ("Onika Tanya Maraj", "Saint James,Port of Spain,Trinidad and Tobago", "40", "Nicki Minaj", "Hiphop/Rap");
+INSERT INTO artists (real_name, born, age, stage_name, genre) VALUES ("Onika Tanya Maraj","Saint James,Port of Spain,Trinidad and Tobago", "40", "Nicki Minaj", "Hiphop/Rap");
 
-INSERT INTO artists (real_name,born,age,stage_name,genre) VALUES ("Christopher Breaux", "California", "35", "Frank Ocean", "Hiphop/Rap");
+INSERT INTO artists (real_name,born,age,stage_name,genre) VALUES ("Christopher Breaux", "California", "35","Frank Ocean","Hiphop/Rap");
 
-INSERT INTO artists (real_name, born,age,stage_name,genre) VALUES ("Kendrick Lamar Duckworth", "California", "36", "Kendrick Lamar", "Hiphop/Rap");
+INSERT INTO artists (real_name, born,age,stage_name,genre) VALUES ("Kendrick Lamar Duckworth", "California","36","Kendrick Lamar", "Hiphop/Rap");
 
-INSERT INTO artists (real_name, born, age,stage_name,genre) VALUES ("Marshall Bruce Mathers III","Michigan", "50", "Enimen","Hiphop/Rap");
+INSERT INTO artists (real_name, born, age,stage_name,genre) VALUES ("Marshall Bruce Mathers III","Michigan", "50","Enimen","Hiphop/Rap");
 
 CREATE TABLE songs (
  id INTEGER PRIMARY KEY AUTOINCREMENT,
