@@ -1,0 +1,136 @@
+
+1. Select all from albums
+SELECT * FROM albums;
+
+2. Select all from employees
+SELECT * FROM employees
+
+3. Show customers who are not in the US
+SELECT FirstName, LastName, CustomerID, Country
+FROM chinook.customers
+WHERE Country != "USA" ;
+
+4. Show customers in the US
+SELECT FirstName, LastName, CustomerID, Country
+FROM chinook.customers
+WHERE Country = "USA";
+
+5. Show customers in Brazil 
+SELECT FirstName, LastName, CustomerID, Country
+FROM chinook.customers
+WHERE Country = "Brazil";
+
+6. Find the invoices of customers who are from the Brazil.
+SELECT cust.FirstName, cust.LastName, inv.InvoiceId, inv.BillingCountry, inv.InvoiceDate
+FROM chinook.invoices as inv
+LEFT JOIN chinook.customers as cust
+ON inv.customerId = cust.customerId
+WHERE inv.BillingCountry = "Brazil";
+
+7. Find the invoices of customers who are from the US.
+SELECT cust.FirstName, cust.LastName, inv.InvoiceId, inv.BillingCountry, inv.InvoiceDate
+FROM chinook.invoices as inv
+LEFT JOIN chinook.customers as cust
+ON inv.customerId = cust.customerId
+WHERE inv.BillingCountry = "USA";
+
+8. Show the customers who are Sales Agents.
+SELECT * 
+FROM chinook.employees
+WHERE title = "Sales Support Agent";
+
+9.Provide a query that shows the invoices associated with each sales agent. The resuting table should include the sales agents full name.
+SELECT emp.LastName, emp.FirstName, inv.InvoiceId
+FROM chinook.Employees emp
+JOIN chinook.Customers cust ON cust.SupportRepId = emp.EmployeeId
+JOIN chinook.Invoices Inv ON Inv.CustomerId = cust.CustomerId;
+
+10. Show the invoice total, customer name, country and sales agent name for all invoices and customers.
+SELECT emp.LastName, emp.FirstName, cust.FirstName, cust.LastName, cust.Country, inv.total
+FROM chinook.employees emp
+JOIN chinook.Customers cust ON cust.SupportRepId = emp.EmployeeId
+JOIN chinook.Invoices Inv ON Inv.CustomerId = cust.CustomerId;
+
+11. Find a distinct list of billing countries from the invoice table
+SELECT DISTINCT BillingCountry FROM chinook.Invoices ;
+
+12. How many invoices were there in 2009?
+SELECT COUNT (*)
+FROM chinook.invoices
+WHERE InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31'
+
+13. What are the total sales for 2009?
+SELECT SUM (Total)
+FROM chinook.Invoices
+WHERE InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31'
+
+ 14. Write a query that includes the purchased track name with each invoice line ID.
+SELECT t.Name, i.InvoiceLineId
+FROM chinook.Invoice_items i 
+JOIN chinook.Tracks t
+ON i.TrackId = t.TrackId;
+
+
+ 15. Write a query that includes the purchased track name and artist name with each invoice line ID.
+
+SELECT ar.name as Artist, t.Name as Track, i.InvoiceLineId
+FROM chinook.Invoice_items i
+LEFT JOIN chinook.tracks t
+ON i.TrackID=t.TrackID
+INNER JOIN chinook.albums a
+ON a.AlbumID=t.AlbumID
+LEFT JOIN chinook.artists ar
+ON ar.ArtistID=a.ArtistID;
+
+16. Provide a query that shows all the Tracks, and include the Album name, Media type and Genre
+SELECT t.name AS 'Track Name', a.Title AS 'Album Title', m.Name AS 'Media Type', g.Name AS 'Genre'
+FROM chinook.tracks t
+JOIN chinook.Albums a 
+ON a.AlbumId = t.AlbumId
+JOIN chinook.Media_Types m
+ON m.MediaTypeId = t.MediaTypeId
+JOIN chinook.Genres g
+ON g.GenreId = t. GenreId;
+
+17. Show the total sales made by each sales agent
+
+SELECT emp.FirstName, emp.LastName,
+ROUND (SUM(Inv.Total), 2) as 'Total Sales'
+FROM chinook.Employees emp
+
+JOIN chinook.Customers cust
+ON cust.SupportRepId = emp.EmployeeId
+
+JOIN chinook.Invoices Inv
+ON Inv.CustomerId = cust.CustomerId
+
+WhERE emp.Title = 'Sales Support Agent'
+GROUP BY emp.FirstName;
+
+18. Which sales agent made the most dollars in sales in 2009?
+
+SELECT emp.FirstName, emp.LastName, 
+ROUND(SUM(INV.Total), 2) as 'Total Sales'
+FROM chinook.Employees emp
+
+JOIN chinook.Customers cust
+ON cust.SupportRepId = emp.EmployeeId
+
+JOIN chinook.Invoices Inv
+ON Inv. CustomerId = cust.CustomerId
+
+WHERE emp.Title = 'Sales Support Agent'
+AND Inv.InvoiceDate Like '2009%'
+GROUP BY emp.FirstName
+ORDER BY (round(sum(Inv.Total), 2)) DESC LIMIT 1;
+
+
+19. How many invoices were there in 2010?
+SELECT COUNT (*)
+FROM chinook.invoices
+WHERE InvoiceDate Between '2010-01-01' AND '2010-12-31'
+
+20. How many invoices were there in 2011?
+SELECT COUNT (*)
+FROM chinook.invoices
+WHERE InvoiceDate Between '2011-01-01' AND '2011-12-31'
